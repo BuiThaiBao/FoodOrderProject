@@ -121,7 +121,7 @@
                     if ($upload == false) {
                         $_SESSION['upload'] = "<div class='error'>Failed to Upload Image</div>";
                         //Redirect to add Category
-                        header('location' . SITEURL . "admin/add_category.php");
+                        header('location:' . SITEURL . "admin/add_category.php");
                         //stop the process
                         die();
                     }

@@ -87,7 +87,7 @@ include("partials/menu.php");
                             if ($image_name != "") {
                             ?>
 
-                                <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>" width=300px>
+                                <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>" width=150px>
 
                             <?php
                             } else {
