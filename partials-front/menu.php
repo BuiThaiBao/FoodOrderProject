@@ -55,6 +55,9 @@
                         <li class="nav-item">
                             <a href="logout.php" class="nav-link">Logout</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="user_profile.php" class="nav-link">Profile</a>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div>

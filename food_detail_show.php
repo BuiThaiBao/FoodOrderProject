@@ -91,7 +91,7 @@ $review_result = mysqli_query($conn, $review_query);
                         <p class="text-muted"><small><?php echo $create_at; ?></small></p>
                         <?php
                         if ($image_name == "") {
-                            echo "<div class='alert alert-danger'>Image not added</div>";
+                            echo "";
                         } else {
                         ?>
                             <img src="<?php echo SITEURL; ?>images/reviews/<?php echo $image_name; ?>" width="150px" class="img-thumbnail">
@@ -119,20 +119,20 @@ $review_result = mysqli_query($conn, $review_query);
                 <!-- Star Rating -->
                 <div class="form-group">
                     <label for="rating">Rating: </label><br>
-                    <input type="radio" id="star5" name="rating" value="5">
-                    <label for="star5" class="star">&#9733;</label>
-
-                    <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4" class="star">&#9733;</label>
-
-                    <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3" class="star">&#9733;</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" class="star">&#9733;</label>
 
                     <input type="radio" id="star2" name="rating" value="2">
                     <label for="star2" class="star">&#9733;</label>
 
-                    <input type="radio" id="star1" name="rating" value="1">
-                    <label for="star1" class="star">&#9733;</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" class="star">&#9733;</label>
+
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" class="star">&#9733;</label>
+
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5" class="star">&#9733;</label>
                 </div>
 
                 <div class="form-group">

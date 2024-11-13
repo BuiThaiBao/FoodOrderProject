@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="food-menu-desc">
-                                <h4><?php echo $title; ?></h4>
+                                <h4 class="title"><?php echo $title; ?></h4>
                                 <p class="food-price"><?php echo $price; ?> VND</p>
                                 <p class="food-detail">
                                     <?php echo $description; ?>
@@ -60,7 +60,7 @@
                                 <label for="quantity">Số lượng:</label>
                                 <input type="number" name="quantity" id="quantity" value="1" min="1" style="width: 60px;">
                             </div>
-                            <input type="submit" class="btn btn-primary mt-2 w-100" value="Add to Cart">
+                            <input type="submit" class="btn btn-primary btn-add mt-2 w-30" value="Add to Cart">
                         </form>
 
                     </div>

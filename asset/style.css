@@ -27,6 +27,7 @@
 
         .food_add_qty {
             margin-top: 10px;
+            margin-left: 70px;
         }
 
         .food-menu-desc h4 {
@@ -48,6 +49,7 @@
 
         .btn-primary, .btn-success {
             transition: background-color 0.3s ease;
+            text-align: center;
         }
 
         .btn-primary:hover, .btn-success:hover {
@@ -113,6 +115,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 10px;
+    
 }
 
 .food-price {
@@ -144,11 +147,14 @@ a:hover {
         }
 
         .food-detail {
+            display: inline-block   ;
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+            height: 100px;
+            overflow: hidden; 
         }
 
         .food-img img {
@@ -203,13 +209,11 @@ a:hover {
             border: 1px solid #ddd;
             margin-top: 10px;
         }
-
-        .btn-primary {
-            background-color: #e74c3c;
-            border-color: #e74c3c;
-            padding: 10px 20px;
-            font-weight: bold;
-        }
+.btn-add{
+        text-align: center;
+        margin-left: 85px;
+}
+        
 
         .btn-primary:hover {
             background-color: #c0392b;
@@ -267,4 +271,12 @@ input[type="radio"]:checked ~ label:hover ~ label {
 input[type="radio"]:not(:checked) ~ label:hover,
 input[type="radio"]:not(:checked) ~ label:hover ~ label {
     color: #ffcc00; /* Bright yellow on hover */
+}
+h4.title{
+ width: 100% !important;   
+ 
+}
+.add-quantity{
+   text-align: center ;
+   margin-left: 85px;
 }
