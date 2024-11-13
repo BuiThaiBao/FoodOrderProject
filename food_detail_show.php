@@ -2,7 +2,7 @@
 include 'partials-front/menu.php';
 
 // Get the food ID from URL
-$food_id = $_GET['food_id'];
+$food_id = intval($_GET['food_id']);
 
 // Retrieve product details from the `tbl_food` table
 $sql = "SELECT * FROM tbl_food WHERE id = $food_id";
@@ -29,108 +29,28 @@ $review_result = mysqli_query($conn, $review_query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sản phẩm</title>
-    <style>
-        /* CSS styling */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
 
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-        .food-detail {
-            display: flex;
-            border: 1px solid #eaeaea;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
 
-        .food-img img {
-            max-width: 300px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .food-info {
-            padding-left: 20px;
-        }
-
-        .food-info h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .food-info .price {
-            font-size: 20px;
-            color: #ff5722;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .food-info .description {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .food-reviews {
-            border-top: 1px solid #eaeaea;
-            padding-top: 20px;
-        }
-
-        .food-reviews h2 {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .food-reviews ul {
-            list-style: none;
-        }
-
-        .food-reviews .review {
-            border-bottom: 1px solid #eaeaea;
-            padding: 15px 0;
-        }
-
-        .food-reviews .review p {
-            font-size: 16px;
-            color: #555;
-            margin: 5px 0;
-        }
-
-        .food-reviews .review p strong {
-            color: #333;
-        }
-
-        .review-rating {
-            color: #ffa500;
-            font-weight: bold;
-        }
-    </style>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <!-- Product Details Section -->
-        <div class="food-detail">
-            <div class="food-img">
-                <?php if ($image_name == ""): ?>
-                    <div class='error'>Image not Available.</div>
-                <?php else: ?>
-                    <img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" class="img-responsive img-curve">
-                <?php endif; ?>
+        <div class="row food-detail">
+            <div class="col-md-6">
+                <div class="food-img">
+                    <?php if ($image_name == ""): ?>
+                        <div class='alert alert-danger'>Image not Available.</div>
+                    <?php else: ?>
+                        <img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" class="img-fluid rounded">
+                    <?php endif; ?>
+                </div>
             </div>
-            <div class="food-info">
-                <h1><?php echo $title ?></h1>
+            <div class="col-md-6 food-info">
+                <h1><?php echo $title; ?></h1>
                 <p class="price"><?php echo $price ?> VND</p>
                 <p class="description"><?php echo $description ?></p>
             </div>
@@ -148,52 +68,89 @@ $review_result = mysqli_query($conn, $review_query);
                 ORDER BY tbl_review.create_at DESC
             ";
             $res2 = mysqli_query($conn, $sql2);
-            if (mysqli_num_rows($review_result) > 0) {
-                // Nếu có review, lặp qua các bản ghi và hiển thị
-                while ($row2 = mysqli_fetch_assoc($review_result)) {
-                    // Lấy thông tin từ kết quả truy vấn
+            $count2 =  mysqli_num_rows($res2);
+
+            if ($count2 > 0) {
+                while ($row2 = mysqli_fetch_assoc($res2)) {
                     $username = $row2['username'];
                     $comment = $row2['comment'];
                     $rating = $row2['rating'];
                     $create_at = $row2['create_at'];
+                    $image_name = $row2['image_name'];
+            ?>
+                    <div class="review-item">
+                        <div><strong><?php echo $username; ?></strong></div>
+                        <div class="rating-stars">
+                            <?php
+                            for ($i = 0; $i < $rating; $i++) {
+                                echo "⭐";
+                            }
+                            ?>
+                        </div>
+                        <p><?php echo $comment; ?></p>
+                        <p class="text-muted"><small><?php echo $create_at; ?></small></p>
+                        <?php
+                        if ($image_name == "") {
+                            echo "<div class='alert alert-danger'>Image not added</div>";
+                        } else {
+                        ?>
+                            <img src="<?php echo SITEURL; ?>images/reviews/<?php echo $image_name; ?>" width="150px" class="img-thumbnail">
+                        <?php
+                        }
+                        ?>
+                    </div>
+            <?php
                 }
             } else {
-                // Nếu không có review nào
-                echo "<p>No reviews yet. Be the first to review!</p>";
+                echo "<div class='alert alert-info'>Không có đánh giá.</div>";
             }
             ?>
-            // Hiển thị thông tin đánh giá
-            <li class='review'>
-                <p><strong><?php echo $username; ?></strong>: <?php echo $comment; ?></p>
-                <p class='review-rating'>Rating: <?php echo $rating; ?></p>
-                <p class='review-time'>Posted on: <?php echo $create_at ?></p>
-            </li>;
-
-
-
         </div>
 
         <!-- Comment Form Section -->
-        <div class="comment-form">
+        <div class="comment-form mt-5">
             <h2>Leave a Comment</h2>
-            <form action="review_handler.php" method="POST">
+            <form action="review_handler.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="food_id" value="<?php echo $food_id; ?>" />
-                <textarea name="comment" id="comment" placeholder="Your comment here..." required></textarea>
-                <br>
-                <label for="rating">Rating: </label>
-                <select name="rating" id="rating" required>
-                    <option value="1">1 - Poor</option>
-                    <option value="2">2 - Fair</option>
-                    <option value="3">3 - Good</option>
-                    <option value="4">4 - Very Good</option>
-                    <option value="5">5 - Excellent</option>
-                </select>
-                <br><br>
-                <input type="submit" class="btn btn-primary" value="Submit Review">
+                <div class="form-group">
+                    <textarea name="comment" id="comment" class="form-control" placeholder="Your comment here..." required></textarea>
+                </div>
+
+                <!-- Star Rating -->
+                <div class="form-group">
+                    <label for="rating">Rating: </label><br>
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5" class="star">&#9733;</label>
+
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" class="star">&#9733;</label>
+
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" class="star">&#9733;</label>
+
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2" class="star">&#9733;</label>
+
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" class="star">&#9733;</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Thêm hình ảnh: </label>
+                    <input type="file" name="image" class="form-control-file">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Đánh giá</button>
             </form>
         </div>
+
+
     </div>
 
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

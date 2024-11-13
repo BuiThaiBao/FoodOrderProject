@@ -1,7 +1,6 @@
 <?php
 // Initialize the session
 
-
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: index.php");
@@ -94,57 +93,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <!-- Important to make website responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Website</title>
+    <title>Restaurant Website - Login</title>
 
-    <!-- Link our CSS file -->
+    <!-- Bootstrap CSS -->
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="asset/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <!-- Navbar Section Starts Here -->
-    <section class="navbar">
+<body class="bg-light">
+
+    <!-- Navbar Section -->
+    <section class="navbar bg-light text-white py-3">
         <div class="container">
             <div class="logo">
-                <a href="http://localhost/FoodOrderProject/index.php" title="Logo">
-                    <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive">
+                <a href="index.php">
+                    <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive" width="150">
                 </a>
             </div>
-            <br>
-            <div class="clearfix"></div>
         </div>
     </section>
-    <!-- Navbar Section Ends Here -->
-    <div class="wrapper">
-        <div class="container my-4 ">
-            <h2>Login</h2>
-            <p>Please fill in your credentials to login.</p>
 
-            <?php
-            if (!empty($login_err)) {
-                echo '<div class="alert alert-danger">' . $login_err . '</div>';
-            }
-            ?>
+    <!-- Login Form Section -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-light">
+                    <div class="card-body p-4">
+                        <h3 class="text-center mb-4">Login</h3>
+                        <p class="text-center mb-4">Please enter your credentials to login.</p>
 
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                        <!-- Display error message if any -->
+                        <?php if (!empty($login_err)) : ?>
+                            <div class="alert alert-danger"><?= $login_err ?></div>
+                        <?php endif; ?>
+
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <div class="form-group mb-3">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" required>
+                                <div class="invalid-feedback"><?php echo $username_err; ?></div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" required>
+                                <div class="invalid-feedback"><?php echo $password_err; ?></div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <button type="submit" class="btn btn-primary w-100">Login</button>
+                            </div>
+
+                            <p class="text-center">Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Login">
-                </div>
-                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-            </form>
+            </div>
         </div>
     </div>
+
+    <!-- Footer Section -->
     <?php include('partials-front/footer.php'); ?>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb4eCexU5v7s5gAJI3Q+nvsaA6mXkz53JcsigWxX4Vq6pScnP" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0r8z9fGJNhJ4J6Gb6A5pQW8otqBIlQFZzF5V42jZczk5LfKj" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

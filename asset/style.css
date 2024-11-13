@@ -1,0 +1,270 @@
+        /* Custom Styles */
+        .categories .box-3 {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .categories .box-3:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .food-menu-box {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .food-menu-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .food-menu-img img {
+            transition: transform 0.3s;
+        }
+
+        .food-menu-img img:hover {
+            transform: scale(1.1);
+        }
+
+        .food_add_qty {
+            margin-top: 10px;
+        }
+
+        .food-menu-desc h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .food-menu-desc .food-price {
+            color: #28a745;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .food-menu-desc .food-detail {
+            font-size: 0.9rem;
+            color: #555;
+            text-decoration-line: none;
+        }
+
+        .btn-primary, .btn-success {
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover, .btn-success:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        .footer-link {
+            color: #ddd;
+        }
+
+        .footer-link:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
+        }
+        /* Thiết lập cho container chứa sản phẩm */
+.food-menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Thiết lập cho mỗi sản phẩm */
+.food-menu-box {
+    width: 23%; /* 4 sản phẩm trên mỗi hàng */
+    margin-bottom: 30px;
+    border-radius: 10px; /* Khung bo tròn */
+    border: 1px solid #ddd; /* Khung viền */
+    overflow: hidden; /* Giới hạn các phần tử ra ngoài khung */
+    transition: transform 0.3s ease; /* Hiệu ứng hover */
+    margin-right: 1%; /* Khoảng cách giữa các sản phẩm */
+}
+
+.food-menu-box:hover {
+    transform: scale(1.05); /* Phóng to khi hover */
+}
+
+/* Khung hình ảnh */
+.food-menu-img img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Các mô tả, giá, nút "Add to Cart" */
+.food-menu-desc {
+    padding: 15px;
+    text-align: center;
+}
+
+.food-menu-desc h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.food-price {
+    color: #e74c3c;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.food-add-qty input {
+    width: 60px;
+    margin-right: 10px;
+}
+a {
+    text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+a:hover {
+    text-decoration: none; /* Bỏ gạch chân khi hover */
+}
+.bg-text{
+    background-color: #0a58ca;
+   
+}
+
+
+        /* Custom CSS */
+        body {
+            background-color: #f9f9f9;
+        }
+
+        .food-detail {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .food-img img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .food-info {
+            padding-left: 20px;
+        }
+
+        .food-info h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .food-info .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .food-reviews {
+            margin-top: 40px;
+        }
+
+        .review-item {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-item .rating {
+            color: #f39c12;
+        }
+
+        .comment-form textarea {
+            width: 100%;
+            height: 120px;
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .comment-form select,
+        .comment-form input[type="file"] {
+            width: 100%;
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background-color: #e74c3c;
+            border-color: #e74c3c;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+
+        .rating-stars {
+            font-size: 18px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .food-detail {
+                padding: 15px;
+            }
+
+            .food-info {
+                padding-left: 0;
+                margin-top: 20px;
+            }
+
+            .food-info h1 {
+                font-size: 20px;
+            }
+
+            .food-info .price {
+                font-size: 18px;
+            }
+        }
+/* Hide the radio buttons */
+input[type="radio"] {
+    display: none;
+}
+
+/* Style for the stars */
+.star {
+    font-size: 30px;
+    color: #ddd; /* light grey */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* When a radio button is selected, highlight the corresponding stars */
+input[type="radio"]:checked ~ label {
+    color: gold; /* Gold color when selected */
+}
+
+/* Highlight stars up to the selected one */
+input[type="radio"]:checked ~ label:hover,
+input[type="radio"]:checked ~ label:hover ~ label {
+    color: gold;
+}
+
+/* Hover effect on stars */
+input[type="radio"]:not(:checked) ~ label:hover,
+input[type="radio"]:not(:checked) ~ label:hover ~ label {
+    color: #ffcc00; /* Bright yellow on hover */
+}

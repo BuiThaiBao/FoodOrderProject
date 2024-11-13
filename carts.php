@@ -1,6 +1,11 @@
 <?php
 include('partials-front/menu.php');
 
+if (!isset($_SESSION['u_id'])) {
+    // Redirect to the login page if the user is not logged in
+    header("Location: login.php");
+    exit;
+}
 if (isset($_POST['food_id']) && isset($_POST['quantity'])) {
     $food_id = $_POST['food_id'];
     $quantity = intval($_POST['quantity']); // Lấy số lượng từ form và chuyển thành số nguyên

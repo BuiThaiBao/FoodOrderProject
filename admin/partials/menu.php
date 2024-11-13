@@ -8,7 +8,7 @@ include('login_check.php');
 
 <head>
     <title>Food Order - Home Page </title>
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../asset/admin.css">
 </head>
 
 <body>

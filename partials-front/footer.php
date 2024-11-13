@@ -1,27 +1,32 @@
-<!-- social Section Starts Here -->
-<section class="social">
+<!-- Social Section Starts Here -->
+<section class="social py-4">
     <div class="container text-center">
-        <ul>
-            <li>
-                <a href="https://www.facebook.com/bao.buithai.167/"><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png" /></a>
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="https://www.facebook.com/bao.buithai.167/" target="_blank">
+                    <img src="https://img.icons8.com/fluent/50/000000/facebook-new.png" alt="Facebook" />
+                </a>
             </li>
-            <li>
-                <a href="https://www.instagram.com/_baoor.is/"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" /></a>
+            <li class="list-inline-item">
+                <a href="https://www.instagram.com/_baoor.is/" target="_blank">
+                    <img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" alt="Instagram" />
+                </a>
             </li>
-
         </ul>
     </div>
 </section>
-<!-- social Section Ends Here -->
+<!-- Social Section Ends Here -->
 
-<!-- footer Section Starts Here -->
-<section class="footer">
+<!-- Footer Section Starts Here -->
+<section class="footer bg-dark text-white py-3">
     <div class="container text-center">
-        <p>All rights reserved. Designed inside <a href="#">Saintgits</a></p>
+        <p class="mb-0">All rights reserved. Designed by <a href="#" class="text-reset fw-bold">Saintgits</a></p>
     </div>
 </section>
-<!-- footer Section Ends Here -->
+<!-- Footer Section Ends Here -->
 
+<!-- Bootstrap JS -->
+<script src="asset/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
